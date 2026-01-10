@@ -1,5 +1,11 @@
-#include
+//Ex: Enter binomial n
+// 4
+// Enter the binomial r
+// 2
+//Output:
+// binomial of 4 & 2 = 6
 
+#include<iostream>
 using namespace std;
 
 int factorial(int num){
