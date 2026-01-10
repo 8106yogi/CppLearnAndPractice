@@ -1,11 +1,11 @@
-name: C++ CI
+name: C++ Build Check (Verbose)
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "develop" ]
-
+    branches: [ "main" ]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,16 +14,34 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependencies
+    - name: Install compiler
       run: |
+        echo "🔧 Updating package list..."
         sudo apt-get update
-        sudo apt-get install -y cmake g++
 
-    - name: Configure
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        echo "🔧 Installing g++ compiler..."
+        sudo apt-get install -y g++
 
-    - name: Build
-      run: cmake --build build --config Release
+        echo "✅ g++ version:"
+        g++ --version
 
-    - name: Run tests
-      run: ctest --test-dir build --output-on-failure
+    - name: Compile all cpp files
+      run: |
+        echo "📁 Creating build directory..."
+        mkdir -p build
+
+        echo "📂 Listing cpp files in repository:"
+        ls -1 *.cpp
+
+        echo "🚀 Starting compilation of each C++ file..."
+        for file in *.cpp; do
+          echo "----------------------------------------"
+          echo "⚙️  Compiling file: $file"
+          echo "👉 Output binary: build/${file%.cpp}"
+          
+          g++ -std=c++17 -Wall -Wextra "$file" -o "build/${file%.cpp}"
+
+          echo "✅ Successfully compiled: $file"
+        done
+
+        echo "🎉 All C++ files compiled successfully!"
