@@ -1,0 +1,98 @@
+// Bitwise Operators in C++
+
+// Bitwise operators perform operations on individual bits of integer data.
+
+// 1. Bitwise AND Operator (&)
+
+// The AND operator compares each bit of two numbers.
+
+// The result bit is 1 only if both bits are 1.
+
+// Otherwise, the result bit is 0.
+
+// Example:
+
+// Let
+// a = 5 → 0101
+// b = 3 → 0011
+
+//   0101
+// & 0011
+// -------
+//   0001
+
+// Result = 1
+
+
+
+
+// 2. Bitwise OR Operator (|)
+
+// The OR operator compares each bit of two numbers.
+
+// The result bit is 1 if at least one bit is 1.
+
+// Example:
+
+// Let
+// a = 5 → 0101
+// b = 3 → 0011
+
+//   0101
+// | 0011
+// -------
+//   0111
+
+// Result = 7
+
+
+
+
+// 3. Bitwise XOR Operator (^)
+
+// The XOR operator compares each bit of two numbers.
+
+// The result bit is 1 only if the bits are different.
+
+// If both bits are the same, the result is 0.
+
+// Example:
+
+// Let
+// a = 5 → 0101
+// b = 3 → 0011
+
+//   0101
+// ^ 0011
+// -------
+//   0110
+
+
+// Result = 6
+
+// Example Program in C++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5, b = 3;
+
+    cout << "AND = " << (a & b) << endl;
+    cout << "OR = " << (a | b) << endl;
+    cout << "XOR = " << (a ^ b) << endl;
+
+    return 0;
+}
+
+// Output:
+// AND = 1
+// OR = 7
+// XOR = 6
+
+
+
+// Summary Table
+// Operator	Name	                Condition
+// &       Bitwise AND	                Both bits must be 1
+// `	`	Bitwise OR                  
+// ^	    Bitwise XOR	                    Bits must be different
